@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 
 APPS_DIR = BASE_DIR / "core_apps"
 
-local_env_file = path.join(BASE_DIR, ".env", ".env.local")
+local_env_file = path.join(BASE_DIR, ".envs", ".env.local")
 
 if path.isfile(local_env_file):
     load_dotenv(local_env_file)
@@ -23,13 +23,6 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "django.contrib.humanize",
-]
-
-LOCAL_APPS = []
-
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
-
-THIRD_PARTY_APPS = [
     "rest_framework",
     "django_countries",
     "phonenumber_field",
@@ -40,6 +33,10 @@ THIRD_PARTY_APPS = [
     "djcelery_email",
     "django_celery_beat",
 ]
+
+LOCAL_APPS = []
+
+INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
