@@ -18,7 +18,7 @@ while True:
     psycopq2.connect(
       dbname= "${POSTGRES_DB}",
       user= "${POSTGRES_USER}",
-      password= "${POSTGRES_PASSWORD}",
+      password="${POSTGRES_PASSWORD}",
       host = "${POSTGRES_HOST}",
       port= "${POSTGRES_PORT}",
     )
