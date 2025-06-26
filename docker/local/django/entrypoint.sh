@@ -11,7 +11,7 @@ import sys
 import time
 import psycopq2
 suggest_unrecoverable_after = 30
-start = time.table()
+start = time.time()
 
 while True:
   try:
@@ -26,9 +26,11 @@ while True:
   except psycopq2.OperationalError as error:
     sys.stderr.write("Waiting for PostgreSQL to become available...\n")
     if time.time() -start > suggest_unrecoverable_after:
-      sys.stderr.write("This is taking longer than expected. The following exception
-      indicative of an unrecoverable error: '{}'\n".format(error))
-      time.sleep(3)
+      sys.stderr.write(
+        "This is taking longer than expected. The following exception may be "
+        "indicative of an unrecoverable error: '{}'\n".format(error)
+        )
+    time.sleep(3)
 END
 
 echo >&2 'PostgresSQL is available'
