@@ -9,7 +9,15 @@ class UserAdmin(UserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
     model = User
-    list_display = ['username', 'email', 'is_staff', 'is_active', 'role','first_name', 'last_name' ]
+    list_display = ['username',
+                    'email',
+                    'is_staff',
+                    'is_active',
+                    'role',
+                    'first_name',
+                    'last_name'
+    ]
+
     list_filter = ['email', 'is_staff', 'is_superuser','is_active', 'role']
     fieldsets = (
     (
@@ -37,13 +45,18 @@ class UserAdmin(UserAdmin):
     (
         _("Security"),
      {
-         "fields": ("security_question", "security_answer", "is_active")
+         "fields": ("security_question", "security_answer")
      },
     ),
     (
         _("Permissions and Groups"),
         {
-            "fields": ("is_active", "is_staff", "is_superuser", "groups", "user_permissions",)
+            "fields": ("is_active",
+                       "is_staff",
+                       "is_superuser",
+                       "groups",
+                       "user_permissions",
+            )
         },
     ),
     (
